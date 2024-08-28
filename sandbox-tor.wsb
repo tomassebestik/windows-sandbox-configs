@@ -1,0 +1,15 @@
+<Configuration>
+
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>c:\SandboxConfig\install\</HostFolder>
+      <SandboxFolder>c:\SandboxConfig\install\</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+
+  <LogonCommand>
+    <Command>C:\SandboxConfig\install\InSandboxLauncher.cmd</Command>
+  </LogonCommand>
+
+</Configuration>

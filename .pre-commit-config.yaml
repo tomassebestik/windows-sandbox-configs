@@ -1,0 +1,42 @@
+---
+# Run `pre-commit autoupdate` to update to the latest pre-commit hooks version.
+minimum_pre_commit_version: 3.3.0 # Specifies the minimum version of pre-commit required for this configuration
+default_install_hook_types: [pre-commit, commit-msg] # Default hook types to install if not specified in individual hooks
+default_stages: [commit]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace # Removes trailing whitespaces from lines
+      - id: mixed-line-ending # Detects mixed line endings (CRLF/LF)
+
+  - repo: https://github.com/espressif/conventional-precommit-linter
+    rev: v1.10.0
+    hooks:
+      - id: conventional-precommit-linter # Lints commit messages for conventional format
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.3.0
+    hooks:
+      - id: codespell # Code spell checker
+        args: ["--write-changes"]
+        additional_dependencies: [tomli]
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.17
+    hooks:
+      - id: mdformat
+        args: [--number] # Keep numbering for ordered lists
+        additional_dependencies:
+          - mdformat-gfm # Support for GitHub Flavored Markdown (GFM), including tables, task lists, strikethroughs, and autolinks.
+          - mdformat-ruff # Formats Python code blocks in Markdown files according to the `ruff` linter's style.
+          - mdformat-simple-breaks # Ensures that single line breaks in Markdown are converted to `<br>` t
+
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args:
+          - --base64-limit=4 # Level of entropy for base64 type strings
+          - --hex-limit=3 # Level of entropy for hex strings
