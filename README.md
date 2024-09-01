@@ -12,12 +12,12 @@
 Create the following file structure:
 
 ```
-C:.
-│   sandbox-tor.wsb
-│
-└───install
-        InSandboxInstalls.ps1
-        InSandboxLauncher.cmd
+C:\
+└── SandboxConfig\
+    ├── sandbox-tor.wsb
+    └── install\
+        ├── InSandboxInstalls.ps1
+        └── InSandboxLauncher.cmd
 ```
 
 ### Explanation:
